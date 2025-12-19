@@ -4,9 +4,9 @@ Single-page utility that lets you paste formatted content (e.g. from Word), edit
 
 ## Features
 
-- Quill editor with headers, emphasis, lists, links, and superscript controls
+- [Quill](https://quilljs.com/) editor with headers, emphasis, lists, links, and superscript controls
 - Auto-converted Markdown source with syntax-normalized tables and footnotes
-- Live preview powered by markdown-it + markdown-it-footnote
+- Live preview powered by [markdown-it](https://github.com/markdown-it/markdown-it) + [markdown-it-footnote](https://github.com/markdown-it/markdown-it-footnote)
 - Copy-to-clipboard actions (button + icon)
 
 ## Getting Started
