@@ -37,6 +37,7 @@ Single-page utility that lets you paste formatted content (e.g. from Word), edit
 
 - [ ] Honor normal external links without footnote semantics
 - [x] Convert unordered lists to markdown `- ` style
+- [ ] Support nested lists
 
 ## License
 
