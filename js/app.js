@@ -222,19 +222,27 @@
     let index = 1;
     list.childNodes.forEach((child) => {
       if (child.nodeType === Node.ELEMENT_NODE && child.tagName.toLowerCase() === "li") {
-        items.push(renderListItem(child, { ...ctx, depth: depth + 1 }, ordered, index));
-        if (ordered) index += 1;
+        const listType = detectListType(list, child, ordered);
+        items.push(renderListItem(child, { ...ctx, depth: depth + 1 }, listType, index));
+        if (listType === "ordered") {
+          index += 1;
+        }
       }
     });
     const joined = items.join("");
     return joined ? `${joined}\n` : "";
   }
 
-  function renderListItem(item, ctx, ordered, index) {
+  function renderListItem(item, ctx, listType, index) {
     const depth = ctx.depth || 1;
     const indent = "  ".repeat(depth - 1);
-    const marker = ordered ? `${index}.` : "-";
-    const content = serializeChildren(item, { ...ctx, inline: true }).trim();
+    const isTask = listType === "checked" || listType === "unchecked";
+    const marker = listType === "ordered" ? `${index}.` : "-";
+    let content = serializeChildren(item, { ...ctx, inline: true }).trim();
+    if (isTask) {
+      const checkbox = listType === "checked" ? "[x]" : "[ ]";
+      content = content ? `${checkbox} ${content}` : checkbox;
+    }
     if (!content) return "";
     const lines = content.split("\n");
     const firstLine = lines.shift();
@@ -244,6 +252,16 @@
       result += line ? `\n${subsequentIndent}${line}` : `\n${subsequentIndent}`;
     });
     return `${result}\n`;
+  }
+
+  function detectListType(listEl, item, defaultOrdered) {
+    const dataList = (item.getAttribute("data-list") || "").toLowerCase();
+    if (dataList === "bullet") return "bullet";
+    if (dataList === "ordered") return "ordered";
+    if (dataList === "checked" || dataList === "unchecked") return dataList;
+    const tag = listEl.tagName ? listEl.tagName.toLowerCase() : "";
+    if (tag === "ul") return "bullet";
+    return defaultOrdered ? "ordered" : "bullet";
   }
 
   function renderTable(tableEl, ctx) {

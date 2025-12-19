@@ -36,7 +36,7 @@ Single-page utility that lets you paste formatted content (e.g. from Word), edit
 ## Todo
 
 - [ ] Honor normal external links without footnote semantics
-- [ ] Convert unordered lists to markdown `- ` style
+- [x] Convert unordered lists to markdown `- ` style
 
 ## License
 
