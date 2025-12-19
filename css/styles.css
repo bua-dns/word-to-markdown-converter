@@ -25,6 +25,7 @@ body {
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
   color: var(--text);
   background: linear-gradient(180deg, var(--bg) 0%, #0c1219 100%);
+  background-attachment: fixed;
   line-height: 1.55;
 }
 a {
@@ -192,10 +193,13 @@ blockquote {
   height: 500px;
   overflow: auto;
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-top-left-radius: var(--radius);
+  border-bottom-left-radius: var(--radius);
   background: var(--panel);
   padding: 12px 14px;
   box-shadow: var(--shadow);
+  scrollbar-color: #39475b var(--panel);
+  scrollbar-width: thin;
 }
 #preview {
   background: var(--surface);
