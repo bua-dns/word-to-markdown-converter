@@ -17,9 +17,12 @@ Single-page utility that lets you paste formatted content (e.g. from Word), edit
 
 ## Project Structure
 
-- [index.html](index.html): Application markup plus converter logic.
-- [css/](css/): Quill snow theme and custom layout styles.
-- [js/](js/): Quill editor bundle, markdown-it, and markdown-it-footnote plugins.
+- [index.html](index.html): Base layout, toolbar markup, and script/style wiring.
+- [css/snow.css](css/snow.css): Vanilla Quill "snow" theme.
+- [css/styles.css](css/styles.css): App-specific layout, panels, and responsive tweaks.
+- [js/app.js](js/app.js): Quill initialization, HTML→Markdown serializer, preview + copy handlers.
+- [js/markdown-it.min.js](js/markdown-it.min.js) & [js/markdown-it-footnote.min.js](js/markdown-it-footnote.min.js): Markdown preview engine + footnote plugin.
+- [js/quill.js](js/quill.js): Embedded Quill build (toolbar + clipboard modules).
 
 ## Copy Markdown Tips
 
